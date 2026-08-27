@@ -52,9 +52,15 @@ CONVERSATION MECHANICS:
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const profile = await getOrCreateLearnerProfile(currentUser.uid, currentUser.email || '');
-        setLearnerProfile(profile);
-        await assemblePrompt(currentUser, profile, activeScenario);
+        try {
+          const profile = await getOrCreateLearnerProfile(currentUser.uid, currentUser.email || '');
+          setLearnerProfile(profile);
+          await assemblePrompt(currentUser, profile, activeScenario);
+        } catch (err) {
+          console.error("DB Error:", err);
+          alert("Database connection failed: " + err.message);
+        }
+        
       } else {
         setLearnerProfile(null);
       }
