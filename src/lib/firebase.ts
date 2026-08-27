@@ -22,3 +22,4 @@ if (firebaseConfig.apiKey) {
 }
 
 export { app, auth, db, googleProvider, signInWithPopup, signOut };
+// Cache invalidation
