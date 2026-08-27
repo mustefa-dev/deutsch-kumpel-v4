@@ -16,7 +16,7 @@ export function useGeminiLive(systemInstruction: string) {
   const connect = useCallback(async () => {
     try {
       const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AQ.Ab8RN6JBieN6u7xKXZQ6z-9QGOr0ZkH0TrfT6g495BW1FEwSxQ";
-      const url = `\${GEMINI_WS_URL}?key=\${apiKey}`;
+      const url = `${GEMINI_WS_URL}?key=${apiKey}`;
       
       wsRef.current = new WebSocket(url);
       streamerRef.current = new AudioStreamer();
