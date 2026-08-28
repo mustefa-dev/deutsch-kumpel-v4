@@ -58,7 +58,7 @@ CONVERSATION MECHANICS:
           await assemblePrompt(currentUser, profile, activeScenario);
         } catch (err) {
           console.error("DB Error:", err);
-          alert("Database connection failed: " + err.message);
+          alert("Database connection failed: " + (err as Error).message);
         }
         
       } else {
